@@ -66,3 +66,12 @@ impl Not for Ubool {
         }
     }
 }
+
+impl Ubool {
+    fn strict_eq(&self, other: &Self) -> bool {
+        match (self.into_bool(), other.into_bool()) {
+            (Some(lhs), Some(other)) => lhs == other,
+            _ => false,
+        }
+    }
+}

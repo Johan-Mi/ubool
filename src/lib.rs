@@ -3,7 +3,7 @@ mod conversions;
 mod misc;
 mod ops;
 
-#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Clone, Copy, PartialEq, Eq)]
 pub enum Ubool {
     True,
     False,
