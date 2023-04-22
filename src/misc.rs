@@ -27,7 +27,7 @@ impl Display for Ubool {
 
 impl Debug for Ubool {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        (self as &dyn Display).fmt(f)
+        Display::fmt(self, f)
     }
 }
 
