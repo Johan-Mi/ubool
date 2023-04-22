@@ -1,5 +1,6 @@
 #![forbid(unsafe_code)]
 #![warn(clippy::nursery, clippy::pedantic)]
+#![no_std]
 
 mod checks;
 mod conversions;

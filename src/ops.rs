@@ -1,5 +1,5 @@
 use crate::{False, True, Ubool, Unknown};
-use std::ops::{
+use core::ops::{
     BitAnd, BitAndAssign, BitOr, BitOrAssign, BitXor, BitXorAssign, Not,
 };
 

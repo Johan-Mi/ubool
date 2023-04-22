@@ -1,5 +1,5 @@
 use crate::{False, True, Ubool, Unknown};
-use std::{
+use core::{
     fmt::{self, Debug, Display},
     str::FromStr,
 };
