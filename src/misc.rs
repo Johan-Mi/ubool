@@ -13,15 +13,11 @@ impl Default for Ubool {
 
 impl Display for Ubool {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(
-            f,
-            "{}",
-            match self {
-                True => "true",
-                False => "false",
-                Unknown => "unknown",
-            },
-        )
+        f.write_str(match self {
+            True => "true",
+            False => "false",
+            Unknown => "unknown",
+        })
     }
 }
 
