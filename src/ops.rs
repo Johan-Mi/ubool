@@ -4,7 +4,7 @@ use std::ops::{
 };
 
 impl BitAnd for Ubool {
-    type Output = Ubool;
+    type Output = Self;
 
     fn bitand(self, rhs: Self) -> Self::Output {
         match (self.into_bool(), rhs.into_bool()) {
@@ -17,12 +17,12 @@ impl BitAnd for Ubool {
 
 impl BitAndAssign for Ubool {
     fn bitand_assign(&mut self, rhs: Self) {
-        *self = *self & rhs
+        *self = *self & rhs;
     }
 }
 
 impl BitOr for Ubool {
-    type Output = Ubool;
+    type Output = Self;
 
     fn bitor(self, rhs: Self) -> Self::Output {
         match (self.into_bool(), rhs.into_bool()) {
@@ -35,12 +35,12 @@ impl BitOr for Ubool {
 
 impl BitOrAssign for Ubool {
     fn bitor_assign(&mut self, rhs: Self) {
-        *self = *self | rhs
+        *self = *self | rhs;
     }
 }
 
 impl BitXor for Ubool {
-    type Output = Ubool;
+    type Output = Self;
 
     fn bitxor(self, rhs: Self) -> Self::Output {
         match (self.into_bool(), rhs.into_bool()) {
@@ -52,23 +52,21 @@ impl BitXor for Ubool {
 
 impl BitXorAssign for Ubool {
     fn bitxor_assign(&mut self, rhs: Self) {
-        *self = *self ^ rhs
+        *self = *self ^ rhs;
     }
 }
 
 impl Not for Ubool {
-    type Output = Ubool;
+    type Output = Self;
 
     fn not(self) -> Self::Output {
-        match self.into_bool() {
-            Some(b) => (!b).into(),
-            None => Unknown,
-        }
+        self.into_bool().map_or(Unknown, |b| (!b).into())
     }
 }
 
 impl Ubool {
-    pub fn strict_eq(self, other: Self) -> Ubool {
+    #[must_use]
+    pub fn strict_eq(self, other: Self) -> Self {
         !(self ^ other)
     }
 }

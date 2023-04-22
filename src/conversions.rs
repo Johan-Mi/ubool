@@ -3,15 +3,18 @@ use std::convert::TryFrom;
 use crate::{False, True, Ubool, Unknown};
 
 impl Ubool {
+    #[must_use]
     pub const fn from_bool(b: bool) -> Self {
-        match b {
-            true => True,
-            false => False,
+        if b {
+            True
+        } else {
+            False
         }
     }
 }
 
 impl Ubool {
+    #[must_use]
     pub const fn into_bool(self) -> Option<bool> {
         match self {
             True => Some(true),
